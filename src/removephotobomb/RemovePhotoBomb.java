@@ -14,7 +14,7 @@ public class RemovePhotoBomb {
    */
   public static void main(String[] args) {
     ImageManipulator manipulator = new ImageManipulator();
-    manipulator.loadPics("./src/removephotobomb/");
+    manipulator.loadPics("./src/removephotobomb/images");
   }
   
 }
