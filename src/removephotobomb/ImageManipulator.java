@@ -23,8 +23,8 @@ public class ImageManipulator {
         // Load the picture
         pics[i] = new Picture(files[i].toString());
         // Testing : output their height and width
-        System.out.println("Image " +i +" height: " + pics[i].getHeight());
-        System.out.println("Image " +i +" width: " + pics[i].getWidth());     
+        System.out.println("Loading " + files[i].toString() +" height: " + pics[i].getHeight());
+        System.out.println("Loading " + files[i].toString() +" width: " + pics[i].getWidth());     
       }
     }
     return pics;
@@ -46,40 +46,40 @@ public class ImageManipulator {
     int red, green, blue;
     Picture newPic = new Picture(w, h);
     
-    ArrayList<Integer> redList = new ArrayList<>();
-    ArrayList<Integer> blueList = new ArrayList<>();
-    ArrayList<Integer> greenList = new ArrayList<>();
+    int[] r = new int[pics.length];
+    int[] g = new int[pics.length];
+    int[] b = new int[pics.length];
     
     for (int i = 0; i < w; i++) {
-      for (int j = 0; j < h; i++) {
+      for (int j = 0; j < h; j++) {
         for (int n = 0; n < pics.length; n++) {
-          redList.add(pics[n].getPixel(i, j).getRed());
-          greenList.add(pics[n].getPixel(i, j).getGreen());
-          blueList.add(pics[n].getPixel(i, j).getBlue());
-          red = median(redList);
-          green = median(greenList);
-          blue = median(blueList);
+          r[n] = pics[n].getPixel(i, j).getRed();
+          g[n] = pics[n].getPixel(i, j).getGreen();
+          b[n] = pics[n].getPixel(i, j).getBlue();
+          red = median(r);
+          green = median(g);
+          blue = median(b);
           newPic.setPixel(i, j, new Pixel(red, green, blue));
         }
       }  
     } 
+    System.out.println("Saving ..." + outputfile);
     newPic.store(outputfile);  
   }
 
   // simple Median
-  public int median(ArrayList<Integer> input) {
+  public int median(int[] input) {
       int median;
-      int size = input.size();
-      Collections.sort(input);
-      if (input.size() % 2 == 0) {
-        median = input.get(size / 2 - 1);
+      int size = input.length;
+      Arrays.sort(input);
+      if (input.length % 2 == 0) {
+        median = input[size / 2 - 1];
       } else {
-        median = input.get(size / 2);
+        median = input[size / 2];
       }
       return median;  
   }
-  
-  
+
   // 1D Median algorithm
   public ArrayList<Integer> getMedian(ArrayList<Integer> input) {
     ArrayList<Integer> result = new ArrayList<>();

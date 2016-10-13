@@ -17,8 +17,8 @@ public class ImageDriver {
   public static void main(String[] args) {
     ImageManipulator ma = new ImageManipulator();
     String path = "./src/removephotobomb/images";
-    String path2 = "new.jpg";
-    ma.run(path, path2);
+    String newName = "nophotobomb.jpg";
+    ma.run(path, newName);
     
     
   }
