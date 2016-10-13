@@ -95,15 +95,15 @@ public class ImageManipulator {
     
     int w = pic.getWidth();
     int h = pic.getHeight();
-    Picture newPic = new Picture(w * 2, h * 2);
+    Picture newPic = new Picture(w, h);
     Pixel current;
     int t1 = 0;
     int t2 = 0;
-    for (int i = 0; i < w ; i++) {
-      for (int j = 0; j < h; j++) {
+    for (int i = w / 4 ; i < 3 * w / 4 ; i++) {
+      for (int j = h / 4; j < 3 * h / 4; j++) {
         current = pic.getPixel(i, j);
-        for (int m = i * 2; m < w * 2 ; m++) {
-          for (int n = j * 2; n < h * 2; n++) { 
+        for (int m = (i - w / 4) * 2  ; m < w ; m++) {
+          for (int n = (j - h / 4) * 2; n < h; n++) { 
             newPic.setPixel(m, n, current);
             t1++;
             if (t1 == 2) {
@@ -122,5 +122,4 @@ public class ImageManipulator {
     System.out.println("Saving..." + outputfile);
     newPic.store(outputfile);
   }
-  
 }
