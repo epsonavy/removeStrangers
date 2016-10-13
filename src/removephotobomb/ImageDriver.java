@@ -1,14 +1,5 @@
-/*
-
- */
 package removephotobomb;
 
-import java.util.ArrayList;
-
-/**
- *
- * @author Pei Lian Liu
- */
 public class ImageDriver {
 
   /**
@@ -17,10 +8,10 @@ public class ImageDriver {
   public static void main(String[] args) {
     ImageManipulator ma = new ImageManipulator();
     String path = "./src/removephotobomb/images";
-    String newName = "nophotobomb.jpg";
-    ma.run(path, newName);
-    
-    
+    String newFileName = "nophotobomb.jpg";
+    String zoomFileName = "zoomed.jpg";
+    //ma.run(path, newFileName);
+    ma.zoomMiddle(newFileName, zoomFileName);
   }
   
 }

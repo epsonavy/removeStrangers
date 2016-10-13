@@ -1,15 +1,8 @@
 package removephotobomb;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
-/**
- *
- * @author Pei Lian Liu
- */
 public class ImageManipulator {
   
   Picture [] loadPics(String directory) {
@@ -32,6 +25,7 @@ public class ImageManipulator {
   
   public void run(String directory, String outputfile) {
     Picture[] pics = loadPics(directory);
+    System.out.println("Removing... photobomb...");
     removePhotobomb(pics, outputfile);
   }
   
@@ -79,44 +73,6 @@ public class ImageManipulator {
       }
       return median;  
   }
-
-  // 1D Median algorithm
-  public ArrayList<Integer> getMedian(ArrayList<Integer> input) {
-    ArrayList<Integer> result = new ArrayList<>();
-    int size = input.size();
-    int windowSize = input.size() / 2 + 1; // make sure window size is odd
-    int[] window = new int[windowSize];
-    int median;
-    int index;
-    ArrayList<Integer> temp = new ArrayList<>();
-    
-    for (int n = 0 ; n < size; n++) {
-      // adding dummy element to fix the boundary issue
-      int dummySize = windowSize / 2;
-      for (int i = 0;  i < dummySize; i++) {
-        temp.add(input.get(0));
-      }
-      for (Integer e: input) {
-        temp.add(e);
-      }
-      for (int i = 0;  i < dummySize; i++) {
-        temp.add(input.get(size - 1));
-      }
-      int start = 0 + n;
-      int end = windowSize + n; 
-      // Adding element to window
-      index = 0;
-      for (int i = start; i < end; i++) {
-        window[index] = temp.get(i);
-        index++;
-      }
-      Arrays.sort(window);
-      median = window[windowSize / 2];
-
-      result.add(median);
-    }
-    return result;
-  }
   
   // check all pics size if they are the same size
   public boolean picsCheck(Picture[] pics) {
@@ -134,7 +90,37 @@ public class ImageManipulator {
   
   
   public void zoomMiddle(String inputfile, String outputfile) {
-  
+    System.out.println("Making.. Zooming image...");
+    Picture pic = new Picture(inputfile);
+    
+    int w = pic.getWidth();
+    int h = pic.getHeight();
+    Picture newPic = new Picture(w * 2, h * 2);
+    Pixel current;
+    int t1 = 0;
+    int t2 = 0;
+    for (int i = 0; i < w ; i++) {
+      for (int j = 0; j < h; j++) {
+        current = pic.getPixel(i, j);
+        for (int m = i * 2; m < w * 2 ; m++) {
+          for (int n = j * 2; n < h * 2; n++) { 
+            newPic.setPixel(m, n, current);
+            t1++;
+            if (t1 == 2) {
+              t1 = 0;
+              break;
+            }      
+          }
+          t2++;
+          if (t2 == 2) {
+            t2 = 0;
+            break;
+          }
+        }
+      }
+    }
+    System.out.println("Saving..." + outputfile);
+    newPic.store(outputfile);
   }
   
 }
