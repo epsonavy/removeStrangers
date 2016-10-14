@@ -18,7 +18,7 @@ javac *.java
 
 > Step 2:
 ~~~~~
-javac ImageDriver <Path of the images>
+java ImageDriver <Path of the images>
 ~~~~
 
 > For example: 
