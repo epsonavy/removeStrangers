@@ -12,10 +12,16 @@ After download all the files, open the terminal, and go to their directory
 
 For Mac OS / Linux:
 
+~~~~~~~~~~~~
 javac *.java
+~~~~~~~~~~~~
 
-javac ImageDriver <Path of the images>
-For example: java ImageDriver images/
+`javac ImageDriver <Path of the images>`
+
+For example: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+`java ImageDriver images/`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Result
 ======
