@@ -8,12 +8,14 @@ public class ImageDriver {
   public static void main(String[] args) {
     
     String path;
-    String newFileName = "nophotobomb.jpg";
-    String zoomFileName = "zoomed.jpg";
+    String newFileName;
+    String zoomFileName;
     
     if (args.length == 1) {
       try {
           path = args[0];
+          newFileName = args[0] + "nophotobomb.jpg";
+          zoomFileName = args[0] + "zoomed.jpg";
           ImageManipulator ma = new ImageManipulator();
           ma.removePhotobomb(path, newFileName);
           ma.zoomMiddle(newFileName, zoomFileName);
