@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class ImageManipulator {
   
@@ -11,17 +12,33 @@ public class ImageManipulator {
   
   Picture [] loadPics(String directory) {
     File[] files = (new File(directory)).listFiles();
-    Picture[] pics = new Picture[files.length];
+    System.out.println("Found " + files.length + " files.");
+    int count = 0;
+
+    for (int i = 0; i < files.length; i++) {
+      // Split the filename by "." so that fileName[0] = "filename", fileName[1] = "jpg"
+      String fileName[] = files[i].getName().split("\\.");
+      // if the extension is jpg 
+      if (fileName[1].equals("jpg")) {
+        count++;
+      }
+    }
+
+    // Found total jpg files and then create Picture Array
+    System.out.println("Found " + count + " jpg files.");
+    Picture[] pics = new Picture[count];
+    count = 0;
     for (int i = 0; i < files.length; i++) {
       // Split the filename by "." so that fileName[0] = "filename", fileName[1] = "jpg"
       String fileName[] = files[i].getName().split("\\.");
       // if the extension is jpg 
       if (fileName[1].equals("jpg")) {
         // Load the picture
-        pics[i] = new Picture(files[i].toString());
+        pics[count] = new Picture(files[i].toString());
         // Testing : output their height and width
-        System.out.println("Loading " + files[i].toString() +" height: " + pics[i].getHeight());
-        System.out.println("Loading " + files[i].toString() +" width: " + pics[i].getWidth());     
+        System.out.println("Loading " + files[i].toString() +" height: " + pics[count].getHeight());
+        System.out.println("Loading " + files[i].toString() +" width: " + pics[count].getWidth()); 
+        count++;    
       }
     }
     return pics;
@@ -74,15 +91,18 @@ public class ImageManipulator {
   
   // check all pics size if they are the same size
   public boolean picsCheck(Picture[] pics) {
-    for (int i = 0; i < pics.length - 1; i++) {
-       if (pics[i].getHeight() != pics[i+1].getHeight())
-         return false;
+    int size = pics[0].getHeight();
+    for(int i = 1; i < pics.length; i++) {
+      if (pics[i].getHeight() != size) 
+        return false;
     }
-    
-    for (int i = 0; i < pics.length - 1; i++) {
-       if (pics[i].getWidth() != pics[i+1].getWidth())
-         return false;
+
+    size = pics[0].getWidth();
+    for(int i = 1; i < pics.length; i++) {
+      if (pics[i].getWidth() != size) 
+        return false;
     }
+
     return true;
   }
   
