@@ -5,12 +5,11 @@ Author： Pei Lian Liu
 
 This is actually Photobomb remover program.
 
-How to Use
-==========
+##How to Use
 
 After download all the files, open the terminal, and go to their directory
 
-:For Mac OS / Linux:
+: For Mac OS / Linux:
 
 ~~~~~~~~~~~~
 javac *.java
@@ -20,13 +19,13 @@ javac *.java
 javac ImageDriver <Path of the images>
 ~~~~
 
-:For example: 
+: For example: 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 java ImageDriver images/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Result
-======
-:Output removebomb filename: "nophotobomb.jpg"
+##Result
 
-:Output zoomed filename: "zoomed.jpg"
+: Output removebomb filename: "nophotobomb.jpg"
+
+: Output zoomed filename: "zoomed.jpg"
