@@ -5,6 +5,12 @@ import java.util.Arrays;
 
 public class ImageManipulator {
   
+  public void removePhotobomb(String directory, String outputfile) {
+    Picture[] pics = loadPics(directory);
+    System.out.println("Removing... photobomb...");
+    removePhoto(pics, outputfile);
+  }
+  
   Picture [] loadPics(String directory) {
     File[] files = (new File(directory)).listFiles();
     Picture[] pics = new Picture[files.length];
@@ -23,13 +29,7 @@ public class ImageManipulator {
     return pics;
   }
   
-  public void run(String directory, String outputfile) {
-    Picture[] pics = loadPics(directory);
-    System.out.println("Removing... photobomb...");
-    removePhotobomb(pics, outputfile);
-  }
-  
-  public void removePhotobomb(Picture[] pics, String outputfile) {
+  public void removePhoto(Picture[] pics, String outputfile) {
     // if multiply pictures are not the same size exit right away
     if (!picsCheck(pics)) {
       System.out.println("Please make sure all pics are the same size!");
@@ -87,7 +87,6 @@ public class ImageManipulator {
     }
     return true;
   }
-  
   
   public void zoomMiddle(String inputfile, String outputfile) {
     System.out.println("Making.. Zooming image...");
