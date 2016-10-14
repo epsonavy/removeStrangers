@@ -9,23 +9,25 @@ This is actually Photobomb remover program.
 
 After download all the files, open the terminal, and go to their directory
 
-: For Mac OS / Linux:
+> For Mac OS / Linux:
 
+> Step 1:
 ~~~~~~~~~~~~
 javac *.java
 ~~~~~~~~~~~~
 
+> Step 2:
 ~~~~~
 javac ImageDriver <Path of the images>
 ~~~~
 
-: For example: 
+> For example: 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 java ImageDriver images/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ##Result
 
-: Output removebomb filename: "nophotobomb.jpg"
+> Output removebomb filename: "nophotobomb.jpg"
 
-: Output zoomed filename: "zoomed.jpg"
+> Output zoomed filename: "zoomed.jpg"
