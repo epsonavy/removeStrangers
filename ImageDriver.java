@@ -1,5 +1,3 @@
-package removephotobomb;
-
 public class ImageDriver {
 
   /**
@@ -31,8 +29,6 @@ public class ImageDriver {
       System.out.println("Output zoomed filename: \"zoomed.jpg\"");
       System.out.println("************************************************");
     }
-    
-    
     
   }
   
